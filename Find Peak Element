@@ -1,0 +1,43 @@
+#include <iostream>
+#include <vector>
+
+int main() {
+    int n;
+    std::cout << "Enter the number of elements: ";
+    std::cin >> n;
+    
+    std::vector<int> arr(n);
+    
+    std::cout << "Enter the elements of the array:\n";
+    for (int i = 0; i < n; i++) {
+        std::cin >> arr[i];
+    }
+    
+    std::cout << "Peak element indices: ";
+    
+    // Check for peak elements
+    if (n == 1) {
+        std::cout << 0 << std::endl; // Only one element, it's a peak by definition
+        return 0;
+    }
+    
+    // Check first element
+    if (arr[0] >= arr[1]) {
+        std::cout << 0 << " ";
+    }
+    
+    // Check last element
+    if (arr[n - 1] >= arr[n - 2]) {
+        std::cout << n - 1 << " ";
+    }
+    
+    // Check for peak elements in the middle
+    for (int i = 1; i < n - 1; i++) {
+        if (arr[i] >= arr[i - 1] && arr[i] >= arr[i + 1]) {
+            std::cout << i << " ";
+        }
+    }
+    
+    std::cout << std::endl;
+    return 0;
+}
